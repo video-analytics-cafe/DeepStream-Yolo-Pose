@@ -1,5 +1,12 @@
 FROM nvcr.io/nvidia/deepstream:6.4-gc-triton-devel
 
+RUN apt-get update && apt-get install -y \
+    ffmpeg \
+    libmpg123-0 \
+    # Add other necessary packages here
+    && rm -rf /var/lib/apt/lists/*
+
+
 RUN pip3 install ultralytics==8.1.29
 RUN pip3 install onnx onnxsim onnxruntime
 
