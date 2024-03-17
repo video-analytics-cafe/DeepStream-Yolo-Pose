@@ -11,8 +11,8 @@ RUN python3 utils/export_yoloV8_pose.py -w yolov8s-pose.pt --dynamic
 
 WORKDIR /app
 
-COPY ./modules ./modules
-COPY ./nvdsinfer_custom_impl_Yolo_pose ./nvdsinfer_custom_impl_Yolo_pose
+COPY ./modules/ ./modules/
+COPY ./nvdsinfer_custom_impl_Yolo_pose/ ./nvdsinfer_custom_impl_Yolo_pose/
 
 COPY ./config_infer_primary_yolonas_pose.txt ./config_infer_primary_yolonas_pose.txt
 COPY ./config_infer_primary_yoloV7_pose.txt ./config_infer_primary_yoloV7_pose.txt
@@ -24,6 +24,8 @@ COPY ./deepstream.py ./deepstream.py
 
 COPY ./labels.txt ./labels.txt
 COPY ./Makefile ./Makefile
+
+COPY ./data/ ./data/
 
 # Setup environment variables for CUDA Toolkit
 # To get video driver libraries at runtime (libnvidia-encode.so/libnvcuvid.so)
