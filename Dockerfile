@@ -74,6 +74,7 @@ RUN apt-get update && \
         git \
         openssl \
         python3 \
+        python3-pip \
         libjsoncpp-dev \
         gcc \
         libjpeg-dev \
