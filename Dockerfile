@@ -1,9 +1,27 @@
 FROM nvcr.io/nvidia/deepstream:6.4-gc-triton-devel
 
+# Install additional apt packages
 RUN apt-get update && apt-get install -y \
+    libssl3 \
+    libssl-dev \
+    libgstreamer1.0-0 \
+    gstreamer1.0-tools \
+    gstreamer1.0-plugins-good \
+    gstreamer1.0-plugins-bad \
+    gstreamer1.0-plugins-ugly \
+    gstreamer1.0-libav \
+    libgstreamer-plugins-base1.0-dev \
+    libgstrtspserver-1.0-0 \
+    libjansson4 \
+    libyaml-cpp-dev \
+    libjsoncpp-dev \
+    protobuf-compiler \
+    gcc \
+    make \
+    git \
+    python3 \
     ffmpeg \
     libmpg123-0 \
-    # Add other necessary packages here
     && rm -rf /var/lib/apt/lists/*
 
 
@@ -23,7 +41,7 @@ COPY . .
 # Setup environment variables for CUDA Toolkit
 # To get video driver libraries at runtime (libnvidia-encode.so/libnvcuvid.so)
 ENV NVIDIA_DRIVER_CAPABILITIES $NVIDIA_DRIVER_CAPABILITIES,video,compute,graphics,utility
-
+ENV GST_DEBUG=6
 ENV CUDA_VER=12.3
 ENV CUDA_HOME=/usr/local/cuda-${CUDA_VER}
 ENV CFLAGS="-I$CUDA_HOME/include $CFLAGS"
@@ -32,6 +50,5 @@ ENV LD_LIBRARY_PATH=${CUDA_HOME}/lib64:${LD_LIBRARY_PATH}
 ENV LD_LIBRARY_PATH=/usr/lib:/usr/local/lib:$LD_LIBRARY_PATH
 
 RUN make -C nvdsinfer_custom_impl_Yolo_pose && make
-RUN export GST_DEBUG=6
 
 CMD ["./deepstream", "-s", "file:///data/demo-video-cafe.mp4", "-c", "config_infer_primary_yoloV8_pose.txt"]
