@@ -25,17 +25,17 @@ COPY ./deepstream.py ./deepstream.py
 COPY ./labels.txt ./labels.txt
 COPY ./Makefile ./Makefile
 
-
-RUN export CUDA_VER=12.3 && make -C nvdsinfer_custom_impl_Yolo_pose && make
-RUN export GST_DEBUG=5
-
 # Setup environment variables for CUDA Toolkit
 # To get video driver libraries at runtime (libnvidia-encode.so/libnvcuvid.so)
 ENV NVIDIA_DRIVER_CAPABILITIES $NVIDIA_DRIVER_CAPABILITIES,video,compute,graphics,utility
 
-ENV CUDA_HOME=/usr/local/cuda-12.3
+ENV CUDA_VER=12.3
+ENV CUDA_HOME=/usr/local/cuda-${CUDA_VER}
 ENV CFLAGS="-I$CUDA_HOME/include $CFLAGS"
 ENV PATH=${CUDA_HOME}/bin:${PATH}
 ENV LD_LIBRARY_PATH=${CUDA_HOME}/lib64:${LD_LIBRARY_PATH}
+
+RUN export CUDA_VER=12.3 && make -C nvdsinfer_custom_impl_Yolo_pose && make
+RUN export GST_DEBUG=5
 
 CMD ["./deepstream", "-s", "file:///data/demo-video-cafe.mp4", "-c", "config_infer_primary_yoloV8_pose.txt"]
