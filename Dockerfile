@@ -88,6 +88,8 @@ RUN pip3 install ultralytics==8.1.29
 RUN pip3 install onnx onnxsim onnxruntime
 RUN wget https://github.com/ultralytics/assets/releases/download/v0.0.0/yolov8s-pose.pt
 
+WORKDIR /
+
 COPY ./utils/export_yoloV8_pose.py ./utils/export_yoloV8_pose.py
 
 RUN python3 utils/export_yoloV8_pose.py -w yolov8s-pose.pt --dynamic
