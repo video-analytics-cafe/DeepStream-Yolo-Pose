@@ -56,7 +56,6 @@ RUN apt-get update && \
         libyaml-cpp-dev \
         libssl-dev \
         openssl \
-        libssl3 \
         gnutls-bin \
         gstreamer1.0-tools \
         gstreamer1.0-plugins-good \
