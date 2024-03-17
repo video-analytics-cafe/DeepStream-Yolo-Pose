@@ -1,14 +1,5 @@
 FROM nvcr.io/nvidia/deepstream:6.4-samples-multiarch
 
-# Setup environment variables for CUDA Toolkit
-# To get video driver libraries at runtime (libnvidia-encode.so/libnvcuvid.so)
-ENV NVIDIA_DRIVER_CAPABILITIES $NVIDIA_DRIVER_CAPABILITIES,video,compute,graphics,utility
-
-ENV CUDA_HOME=/usr/local/cuda-12.1
-ENV CFLAGS="-I$CUDA_HOME/include $CFLAGS"
-ENV PATH=${CUDA_HOME}/bin:${PATH}
-ENV LD_LIBRARY_PATH=${CUDA_HOME}/lib64:${LD_LIBRARY_PATH}
-
 # Install additional packages
 RUN apt-get update && apt-get install -y \
     libjson-glib-dev \
@@ -101,5 +92,14 @@ COPY ./ ./
 
 RUN export CUDA_VER=12.1 && make -C nvdsinfer_custom_impl_Yolo_pose && make
 RUN export GST_DEBUG=5
+
+# Setup environment variables for CUDA Toolkit
+# To get video driver libraries at runtime (libnvidia-encode.so/libnvcuvid.so)
+ENV NVIDIA_DRIVER_CAPABILITIES $NVIDIA_DRIVER_CAPABILITIES,video,compute,graphics,utility
+
+ENV CUDA_HOME=/usr/local/cuda-12.1
+ENV CFLAGS="-I$CUDA_HOME/include $CFLAGS"
+ENV PATH=${CUDA_HOME}/bin:${PATH}
+ENV LD_LIBRARY_PATH=${CUDA_HOME}/lib64:${LD_LIBRARY_PATH}
 
 CMD ["./deepstream", "-s", "file:///data/demo-video-cafe.mp4", "-c", "config_infer_primary_yoloV8_pose.txt"]
