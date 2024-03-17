@@ -98,6 +98,6 @@ RUN python3 utils/export_yoloV8_pose.py -w yolov8s-pose.pt --dynamic
 COPY ./ ./
 
 RUN export CUDA_VER=12.3 && make -C nvdsinfer_custom_impl_Yolo_pose && make
-
+RUN export GST_DEBUG=3
 
 CMD ["./deepstream", "-s", "file:///data/demo-video-cafe.mp4", "-c", "config_infer_primary_yoloV8_pose.txt"]
