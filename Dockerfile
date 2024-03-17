@@ -9,21 +9,21 @@ COPY ./utils/export_yoloV8_pose.py ./utils/export_yoloV8_pose.py
 
 RUN python3 utils/export_yoloV8_pose.py -w yolov8s-pose.pt --dynamic
 
-COPY ./modules ./app/modules
-COPY ./nvdsinfer_custom_impl_Yolo_pose ./app/nvdsinfer_custom_impl_Yolo_pose
-
-COPY ./config_infer_primary_yolonas_pose.txt ./app/config_infer_primary_yolonas_pose.txt
-COPY ./config_infer_primary_yoloV7_pose.txt ./app/config_infer_primary_yoloV7_pose.txt
-COPY ./config_infer_primary_yoloV8_pose.txt ./app/config_infer_primary_yoloV8_pose.txt
-
-COPY ./deepstream.c ./app/deepstream.c
-COPY ./deepstream.h ./app/deepstream.h
-COPY ./deepstream.py ./app/deepstream.py
-
-COPY ./labels.txt ./app/labels.txt
-COPY ./Makefile ./app/Makefile
-
 WORKDIR /app
+
+COPY ./modules ./modules
+COPY ./nvdsinfer_custom_impl_Yolo_pose ./nvdsinfer_custom_impl_Yolo_pose
+
+COPY ./config_infer_primary_yolonas_pose.txt ./config_infer_primary_yolonas_pose.txt
+COPY ./config_infer_primary_yoloV7_pose.txt ./config_infer_primary_yoloV7_pose.txt
+COPY ./config_infer_primary_yoloV8_pose.txt ./config_infer_primary_yoloV8_pose.txt
+
+COPY ./deepstream.c ./deepstream.c
+COPY ./deepstream.h ./deepstream.h
+COPY ./deepstream.py ./deepstream.py
+
+COPY ./labels.txt ./labels.txt
+COPY ./Makefile ./Makefile
 
 # Setup environment variables for CUDA Toolkit
 # To get video driver libraries at runtime (libnvidia-encode.so/libnvcuvid.so)
