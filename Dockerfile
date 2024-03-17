@@ -31,6 +31,6 @@ ENV PATH=${CUDA_HOME}/bin:${PATH}
 ENV LD_LIBRARY_PATH=${CUDA_HOME}/lib64:${LD_LIBRARY_PATH}
 
 RUN make -C nvdsinfer_custom_impl_Yolo_pose && make
-RUN export GST_DEBUG=5
+RUN export GST_DEBUG=6
 
 CMD ["./deepstream", "-s", "file:///data/demo-video-cafe.mp4", "-c", "config_infer_primary_yoloV8_pose.txt"]
