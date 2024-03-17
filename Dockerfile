@@ -77,6 +77,13 @@ RUN apt-get update && \
         rm -rf /var/lib/apt/lists/* && \
         apt autoremove
 
+RUN apt-get update && apt-get install -y \
+    libmpeg2-4 \
+    libx265-199 \
+    libmpg123-0 \
+    libavcodec-extra \
+    libde265-0
+
 RUN pip3 install ultralytics==8.1.29
 RUN pip3 install onnx onnxsim onnxruntime
 
