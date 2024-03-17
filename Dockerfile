@@ -3,7 +3,7 @@ FROM nvcr.io/nvidia/deepstream:6.4-gc-triton-devel
 RUN pip3 install ultralytics==8.1.29
 RUN pip3 install onnx onnxsim onnxruntime
 
-WORKDIR /app
+WORKDIR /
 
 RUN wget https://github.com/ultralytics/assets/releases/download/v0.0.0/yolov8s-pose.pt
 
