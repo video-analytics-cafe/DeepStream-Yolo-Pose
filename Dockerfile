@@ -9,7 +9,7 @@ COPY ./utils/export_yoloV8_pose.py ./utils/export_yoloV8_pose.py
 
 RUN python3 utils/export_yoloV8_pose.py -w yolov8s-pose.pt --dynamic
 
-WORKDIR /app
+WORKDIR /
 
 COPY ./modules/ ./modules/
 COPY ./nvdsinfer_custom_impl_Yolo_pose/ ./nvdsinfer_custom_impl_Yolo_pose/
