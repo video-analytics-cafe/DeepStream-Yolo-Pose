@@ -29,6 +29,7 @@ ENV CUDA_HOME=/usr/local/cuda-${CUDA_VER}
 ENV CFLAGS="-I$CUDA_HOME/include $CFLAGS"
 ENV PATH=${CUDA_HOME}/bin:${PATH}
 ENV LD_LIBRARY_PATH=${CUDA_HOME}/lib64:${LD_LIBRARY_PATH}
+ENV LD_LIBRARY_PATH=/usr/lib:/usr/local/lib:$LD_LIBRARY_PATH
 
 RUN make -C nvdsinfer_custom_impl_Yolo_pose && make
 RUN export GST_DEBUG=6
