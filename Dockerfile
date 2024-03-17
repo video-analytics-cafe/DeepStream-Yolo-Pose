@@ -62,7 +62,6 @@ RUN apt-get update && \
         gstreamer1.0-plugins-bad \
         gstreamer1.0-plugins-ugly \
         gstreamer1.0-alsa \
-        libssl3  \
         libgstreamer1.0-0 \
         libgstrtspserver-1.0-0 \
         libjansson4 \
