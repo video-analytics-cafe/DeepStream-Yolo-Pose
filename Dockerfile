@@ -92,7 +92,7 @@ COPY ./utils/export_yoloV8_pose.py ./utils/export_yoloV8_pose.py
 
 RUN python3 utils/export_yoloV8_pose.py -w yolov8s-pose.pt --dynamic
 
-COPY . .
+COPY ./ ./
 
 RUN export CUDA_VER=12.3
 RUN make -C nvdsinfer_custom_impl_Yolo_pose
