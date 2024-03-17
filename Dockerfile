@@ -1,4 +1,4 @@
-FROM nvcr.io/nvidia/deepstream:6.4-samples
+FROM nvcr.io/nvidia/deepstream:6.4-samples-multiarch
 
 # Setup environment variables for CUDA Toolkit
 ENV CUDA_HOME=/usr/local/cuda
