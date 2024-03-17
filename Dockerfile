@@ -25,9 +25,9 @@ RUN apt-get update && apt-get install -y \
 
 RUN apt-get -y --no-install-recommends install \
     git \
-    autoconf \
-    automake \
-    libtool \
+#    autoconf \
+#    automake \
+#    libtool \
     gstreamer-1.0 \
     gstreamer1.0-dev \
     libgstreamer1.0-0 \
@@ -46,10 +46,57 @@ RUN apt-get -y --no-install-recommends install \
 #    gstreamer1.0-pulseaudio \
 #    python-gst-1.0 \
 #    libgirepository1.0-dev \
-    libcairo2-dev \
+#    libcairo2-dev \
     gir1.2-gstreamer-1.0 \
-    python3-gi
+#    python3-gi
 #    python-gi-dev
+
+# Add open GL libraries and other required components. Added new gstreamer components and additional components including CVE patches
+RUN apt-get update && \
+        DEBIAN_FRONTEND=noninteractive  apt-get install -y --no-install-recommends \
+        pkg-config \
+        libglvnd-dev \
+        libgl1-mesa-dev \
+        libegl1-mesa-dev \
+        libgles2-mesa-dev \
+        libegl-mesa0 \
+        libglib2.0-dev \
+        libcjson-dev \
+        libssl-dev \
+        wget \
+        libyaml-cpp-dev \
+        libssl-dev \
+        openssl \
+        libssl3 \
+        gnutls-bin \
+        gstreamer1.0-tools \
+        gstreamer1.0-plugins-good \
+        gstreamer1.0-plugins-bad \
+        gstreamer1.0-plugins-ugly \
+        gstreamer1.0-alsa \
+        libssl3  \
+        libgstreamer1.0-0 \
+        libgstrtspserver-1.0-0 \
+        libjansson4 \
+        librabbitmq4 \
+        libuuid1 \
+        libc-bin \
+        libcurl3-gnutls \
+        libcurl4 \
+        libjson-glib-1.0-0 \
+        gstreamer1.0-rtsp \
+        rsyslog \
+        git \
+        openssl \
+        python3 \
+        libjsoncpp-dev \
+        gcc \
+        libjpeg-dev \
+        libxml2 \
+        zlib1g \
+        tzdata && \
+        rm -rf /var/lib/apt/lists/* && \
+        apt autoremove
 
 RUN pip3 install ultralytics==8.1.29
 RUN pip3 install onnx onnxsim onnxruntime
