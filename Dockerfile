@@ -1,7 +1,11 @@
-FROM nvcr.io/nvidia/deepstream:6.4-samples-multiarch
+FROM nvcr.io/nvidia/deepstream:6.1.1-triton
 
 # Setup environment variables for CUDA Toolkit
-ENV CUDA_HOME=/usr/local/cuda-12.1
+# To get video driver libraries at runtime (libnvidia-encode.so/libnvcuvid.so)
+ENV NVIDIA_DRIVER_CAPABILITIES $NVIDIA_DRIVER_CAPABILITIES,video,compute,graphics,utility
+
+ENV CUDA_HOME=/usr/local/cuda
+ENV CFLAGS="-I$CUDA_HOME/include $CFLAGS"
 ENV PATH=${CUDA_HOME}/bin:${PATH}
 ENV LD_LIBRARY_PATH=${CUDA_HOME}/lib64:${LD_LIBRARY_PATH}
 
