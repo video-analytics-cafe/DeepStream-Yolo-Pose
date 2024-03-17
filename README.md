@@ -1,5 +1,18 @@
 # DeepStream-Yolo-Pose
 
+# Docker
+
+```bash
+docker build -t ds-yolo:v5 .
+```
+
+```bash
+export DISPLAY=:0
+xhost +
+docker run -it --rm --privileged --gpus all     -e DISPLAY=${DISPLAY}     --device /dev/snd     -v /tmp/.X11-unix/:/tmp/.X11-unix     --runtime=nvidia     ds-yolo:v5 /bin/bash
+```
+#
+
 NVIDIA DeepStream SDK application for YOLO-Pose models
 
 --------------------------------------------------------------------------------------------------
