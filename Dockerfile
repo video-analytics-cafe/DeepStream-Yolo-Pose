@@ -97,7 +97,6 @@ RUN apt-get -y --no-install-recommends install \
     gstreamer1.0-plugins-bad \
     gstreamer1.0-plugins-ugly \
     gstreamer1.0-libav \
-    gstreamer1.0-doc \
     gstreamer1.0-tools \
     gstreamer1.0-x \
     gstreamer1.0-alsa \
@@ -105,7 +104,6 @@ RUN apt-get -y --no-install-recommends install \
     gstreamer1.0-gtk3 \
     gstreamer1.0-qt5 \
     gstreamer1.0-pulseaudio \
-    python-gst-1.0 \
     libgirepository1.0-dev \
     libcairo2-dev \
     gir1.2-gstreamer-1.0 \
