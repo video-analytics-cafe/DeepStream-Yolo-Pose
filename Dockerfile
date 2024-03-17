@@ -1,4 +1,4 @@
-FROM nvcr.io/nvidia/deepstream:6.1.1-triton
+FROM nvcr.io/nvidia/deepstream:6.4-samples-multiarch
 
 # Setup environment variables for CUDA Toolkit
 # To get video driver libraries at runtime (libnvidia-encode.so/libnvcuvid.so)
