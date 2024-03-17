@@ -2,6 +2,7 @@ FROM nvcr.io/nvidia/deepstream:6.4-gc-triton-devel
 
 # Install additional apt packages
 RUN apt-get update && apt-get install -y \
+    xvfb \
     libssl3 \
     libssl-dev \
     libgstreamer1.0-0 \
@@ -48,6 +49,11 @@ ENV CFLAGS="-I$CUDA_HOME/include $CFLAGS"
 ENV PATH=${CUDA_HOME}/bin:${PATH}
 ENV LD_LIBRARY_PATH=${CUDA_HOME}/lib64:${LD_LIBRARY_PATH}
 ENV LD_LIBRARY_PATH=/usr/lib:/usr/local/lib:$LD_LIBRARY_PATH
+# Set up the Xvfb environment variables
+ENV DISPLAY=:99
+
+# Optionally, start Xvfb automatically. You can also start it manually in your entrypoint script.
+RUN Xvfb :99 -screen 0 1024x768x24 &
 
 RUN make -C nvdsinfer_custom_impl_Yolo_pose && make
 
