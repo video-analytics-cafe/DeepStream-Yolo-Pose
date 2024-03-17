@@ -3,27 +3,27 @@ FROM nvcr.io/nvidia/deepstream:6.4-gc-triton-devel
 RUN pip3 install ultralytics==8.1.29
 RUN pip3 install onnx onnxsim onnxruntime
 
-WORKDIR /
-
 RUN wget https://github.com/ultralytics/assets/releases/download/v0.0.0/yolov8s-pose.pt
 
 COPY ./utils/export_yoloV8_pose.py ./utils/export_yoloV8_pose.py
 
 RUN python3 utils/export_yoloV8_pose.py -w yolov8s-pose.pt --dynamic
 
-COPY ./modules ./modules
-COPY ./nvdsinfer_custom_impl_Yolo_pose ./nvdsinfer_custom_impl_Yolo_pose
+COPY ./modules ./app/modules
+COPY ./nvdsinfer_custom_impl_Yolo_pose ./app/nvdsinfer_custom_impl_Yolo_pose
 
-COPY ./config_infer_primary_yolonas_pose.txt ./config_infer_primary_yolonas_pose.txt
-COPY ./config_infer_primary_yoloV7_pose.txt ./config_infer_primary_yoloV7_pose.txt
-COPY ./config_infer_primary_yoloV8_pose.txt ./config_infer_primary_yoloV8_pose.txt
+COPY ./config_infer_primary_yolonas_pose.txt ./app/config_infer_primary_yolonas_pose.txt
+COPY ./config_infer_primary_yoloV7_pose.txt ./app/config_infer_primary_yoloV7_pose.txt
+COPY ./config_infer_primary_yoloV8_pose.txt ./app/config_infer_primary_yoloV8_pose.txt
 
-COPY ./deepstream.c ./deepstream.c
-COPY ./deepstream.h ./deepstream.h
-COPY ./deepstream.py ./deepstream.py
+COPY ./deepstream.c ./app/deepstream.c
+COPY ./deepstream.h ./app/deepstream.h
+COPY ./deepstream.py ./app/deepstream.py
 
-COPY ./labels.txt ./labels.txt
-COPY ./Makefile ./Makefile
+COPY ./labels.txt ./app/labels.txt
+COPY ./Makefile ./app/Makefile
+
+WORKDIR /app
 
 # Setup environment variables for CUDA Toolkit
 # To get video driver libraries at runtime (libnvidia-encode.so/libnvcuvid.so)
