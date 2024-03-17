@@ -46,8 +46,8 @@ set_custom_bbox(NvDsObjectMeta *obj_meta)
 
   obj_meta->rect_params.border_width = border_width;
   obj_meta->rect_params.border_color.red = 0.0;
-  obj_meta->rect_params.border_color.green = 0.0;
-  obj_meta->rect_params.border_color.blue = 1.0;
+  obj_meta->rect_params.border_color.green = 1.0;
+  obj_meta->rect_params.border_color.blue = 0.0;
   obj_meta->rect_params.border_color.alpha = 1.0;
   obj_meta->text_params.font_params.font_name = (gchar *) "Ubuntu";
   obj_meta->text_params.font_params.font_size = font_size;
