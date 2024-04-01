@@ -2,7 +2,7 @@ import json
 import logging
 import argparse
 
-from src.app import App
+from deepstream_kafka.src.app import App
 
 
 def main(args: argparse.Namespace) -> None:
