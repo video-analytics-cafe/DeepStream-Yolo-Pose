@@ -1,6 +1,5 @@
 FROM serge3006/deepstream-python-bindings-6.1
 
-COPY . /app
 WORKDIR /app
 
 # Install kafka
