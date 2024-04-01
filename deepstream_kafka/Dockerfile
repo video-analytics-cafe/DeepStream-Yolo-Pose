@@ -15,12 +15,12 @@ RUN git clone https://github.com/edenhill/librdkafka.git \
 RUN apt-get install libglib2.0 libglib2.0-dev \
     && apt-get install libjansson4 libjansson-dev
 
-COPY ./deepstream_kafka/requirements.txt requirements.txt
+COPY ./requirements.txt requirements.txt
 
 RUN python3 -m pip install -r requirements.txt
 
-COPY ./deepstream_kafka/configs configs
-COPY ./deepstream_kafka/model model
-COPY ./deepstream_kafka/src src
-COPY ./deepstream_kafka/main.py main.py
-COPY ./deepstream_kafka/__init__.py __init__.py
+COPY ./configs deepstream_kafka/configs
+COPY ./model deepstream_kafka/model
+COPY ./src deepstream_kafka/src
+COPY ./main.py deepstream_kafka/main.py
+COPY ./__init__.py deepstream_kafka/__init__.py
