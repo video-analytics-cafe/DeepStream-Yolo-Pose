@@ -8,9 +8,9 @@ import pyds
 from gi.repository import GObject, Gst
 from shapely.geometry import MultiLineString, Point
 
-from deepstream_kafka.src import utils
-from deepstream_kafka.src.utils import bus_call
-from deepstream_kafka.src.metadata import generate_event_msg_meta, meta_copy_func, meta_free_func
+from ..src import utils
+from ..src.utils import bus_call
+from ..src.metadata import generate_event_msg_meta, meta_copy_func, meta_free_func
 
 
 class App:
