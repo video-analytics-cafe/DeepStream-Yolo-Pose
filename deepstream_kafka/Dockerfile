@@ -22,3 +22,5 @@ RUN python3 -m pip install -r requirements.txt
 COPY ./configs configs
 COPY ./model model
 COPY ./src src
+COPY ./main.py main.py
+COPY ./__init__.py __init__.py
