@@ -15,4 +15,10 @@ RUN git clone https://github.com/edenhill/librdkafka.git \
 RUN apt-get install libglib2.0 libglib2.0-dev \
     && apt-get install libjansson4 libjansson-dev
 
+COPY ./requirements.txt requirements.txt
+
 RUN python3 -m pip install -r requirements.txt
+
+COPY ./configs configs
+COPY ./model model
+COPY ./src src
