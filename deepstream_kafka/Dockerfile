@@ -19,8 +19,8 @@ COPY ./requirements.txt requirements.txt
 
 RUN python3 -m pip install -r requirements.txt
 
-COPY ./configs deepstream_kafka/configs
-COPY ./model deepstream_kafka/model
-COPY ./src deepstream_kafka/src
-COPY ./main.py deepstream_kafka/main.py
-COPY ./__init__.py deepstream_kafka/__init__.py
+COPY ./configs /app/deepstream_kafka/configs
+COPY ./model /app/deepstream_kafka/model
+COPY ./src /app/deepstream_kafka/src
+COPY ./main.py /app/deepstream_kafka/main.py
+COPY ./__init__.py /app/deepstream_kafka/__init__.py
