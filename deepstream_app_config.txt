@@ -21,7 +21,7 @@ cudadec-memtype=0
 
 [sink0]
 enable=1
-type=2
+type=1 # 1=Fakesink, 2=EGL (nveglglessink), 3=Filesink, 4=RTSP, 5=Overlay (Jetson only)
 sync=0
 gpu-id=0
 nvbuf-memory-type=0
