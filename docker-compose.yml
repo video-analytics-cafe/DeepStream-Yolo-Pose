@@ -1,0 +1,20 @@
+version: "3.9"
+
+services:
+  deepstream:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command:  ["./deepstream", "-s", "file:///data/demo-video-cafe.mp4", "-c", "config_infer_primary_yoloV8_pose.txt"]
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+      - DISPLAY=:1
+    volumes:
+      - /tmp/.X11-unix/:/tmp/.X11-unix
+    runtime: nvidia
+    networks:
+      - arch-network
+
+networks:
+  arch-network:
+    driver: "bridge"

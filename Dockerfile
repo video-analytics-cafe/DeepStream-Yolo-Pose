@@ -41,18 +41,15 @@ COPY . .
 
 # Setup environment variables for CUDA Toolkit
 # To get video driver libraries at runtime (libnvidia-encode.so/libnvcuvid.so)
-ENV NVIDIA_DRIVER_CAPABILITIES $NVIDIA_DRIVER_CAPABILITIES,video,compute,graphics,utility
+ENV NVIDIA_DRIVER_CAPABILITIES video,compute,graphics,utility
 ENV NVIDIA_VISIBLE_DEVICES all
-ENV GST_DEBUG=6
-ENV CUDA_VER=12.3
-ENV CUDA_HOME=/usr/local/cuda-${CUDA_VER}
-ENV CFLAGS="-I$CUDA_HOME/include $CFLAGS"
-ENV PATH=${CUDA_HOME}/bin:${PATH}
-ENV LD_LIBRARY_PATH=${CUDA_HOME}/lib64:${LD_LIBRARY_PATH}
-ENV LD_LIBRARY_PATH=/usr/lib:/usr/local/lib:$LD_LIBRARY_PATH
+ENV GST_DEBUG=3
+#ENV CUDA_VER=12.3
+#ENV CUDA_HOME=/usr/local/cuda-${CUDA_VER}
+#ENV CFLAGS="-I$CUDA_HOME/include $CFLAGS"
+#ENV PATH=${CUDA_HOME}/bin:${PATH}
+#ENV LD_LIBRARY_PATH=${CUDA_HOME}/lib64:${LD_LIBRARY_PATH}
+#ENV LD_LIBRARY_PATH=/usr/lib:/usr/local/lib:$LD_LIBRARY_PATH
 # Set up the Xvfb environment variables
-ENV DISPLAY=:1
 
 RUN make -C nvdsinfer_custom_impl_Yolo_pose && make
-
-CMD ["./deepstream", "-s", "file:///data/demo-video-cafe.mp4", "-c", "config_infer_primary_yoloV8_pose.txt"]
