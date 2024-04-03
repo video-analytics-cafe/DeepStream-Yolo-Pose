@@ -44,10 +44,10 @@ COPY . .
 ENV NVIDIA_DRIVER_CAPABILITIES video,compute,graphics,utility
 ENV NVIDIA_VISIBLE_DEVICES all
 ENV GST_DEBUG=3
-#ENV CUDA_VER=12.3
-#ENV CUDA_HOME=/usr/local/cuda-${CUDA_VER}
-#ENV CFLAGS="-I$CUDA_HOME/include $CFLAGS"
-#ENV PATH=${CUDA_HOME}/bin:${PATH}
+ENV CUDA_VER=12.3
+ENV CUDA_HOME=/usr/local/cuda-${CUDA_VER}
+ENV CFLAGS="-I$CUDA_HOME/include $CFLAGS"
+ENV PATH=${CUDA_HOME}/bin:${PATH}
 #ENV LD_LIBRARY_PATH=${CUDA_HOME}/lib64:${LD_LIBRARY_PATH}
 #ENV LD_LIBRARY_PATH=/usr/lib:/usr/local/lib:$LD_LIBRARY_PATH
 # Set up the Xvfb environment variables
