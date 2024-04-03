@@ -50,10 +50,7 @@ ENV PATH=${CUDA_HOME}/bin:${PATH}
 ENV LD_LIBRARY_PATH=${CUDA_HOME}/lib64:${LD_LIBRARY_PATH}
 ENV LD_LIBRARY_PATH=/usr/lib:/usr/local/lib:$LD_LIBRARY_PATH
 # Set up the Xvfb environment variables
-ENV DISPLAY=:99
-
-# Optionally, start Xvfb automatically. You can also start it manually in your entrypoint script.
-RUN Xvfb :99 -screen 0 1024x768x24 &
+ENV DISPLAY=:1
 
 RUN make -C nvdsinfer_custom_impl_Yolo_pose && make
 
