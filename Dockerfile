@@ -42,6 +42,7 @@ COPY . .
 # Setup environment variables for CUDA Toolkit
 # To get video driver libraries at runtime (libnvidia-encode.so/libnvcuvid.so)
 ENV NVIDIA_DRIVER_CAPABILITIES $NVIDIA_DRIVER_CAPABILITIES,video,compute,graphics,utility
+ENV NVIDIA_VISIBLE_DEVICES all
 ENV GST_DEBUG=6
 ENV CUDA_VER=12.3
 ENV CUDA_HOME=/usr/local/cuda-${CUDA_VER}
