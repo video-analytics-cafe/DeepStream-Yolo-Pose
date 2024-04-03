@@ -7,7 +7,7 @@ docker build -t ds-yolo:v5 .
 ```
 
 ```bash
-export DISPLAY=:0
+export DISPLAY=:1
 xhost +
 docker run -it --rm --privileged --gpus all     -e DISPLAY=${DISPLAY}     --device /dev/snd     -v /tmp/.X11-unix/:/tmp/.X11-unix     --runtime=nvidia     ds-yolo:v5 /bin/bash
 ```
