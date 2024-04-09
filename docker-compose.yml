@@ -5,9 +5,9 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-#    command:  ["./deepstream", "-s", "file:///data/demo-video-cafe.mp4", "-c", "config_infer_primary_yoloV8_pose.txt"]
+    command:  ["./deepstream", "-s", "file:///data/demo-video-cafe.mp4", "-c", "config_infer_primary_yoloV8_pose.txt"]
 #    command:  ["deepstream-app", "-c", "deepstream_app_config.txt"]
-    command:  ["deepstream-app", "-c", "deepstream_app_config_output_file.txt"]
+#    command:  ["deepstream-app", "-c", "deepstream_app_config_output_file.txt"]
     environment:
       - NVIDIA_VISIBLE_DEVICES=all
       - DISPLAY=:1
