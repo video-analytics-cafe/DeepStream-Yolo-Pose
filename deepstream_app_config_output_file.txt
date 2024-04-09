@@ -14,7 +14,7 @@ nvbuf-memory-type=0
 [source0]
 enable=1
 type=3
-uri=file:///home/sedan/Projects/video-demo-cafe/demo-video-cafe.mp4
+uri=file:///data/demo-video-cafe.mp4
 num-sources=1
 gpu-id=0
 cudadec-memtype=0
