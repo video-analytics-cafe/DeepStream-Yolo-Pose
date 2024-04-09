@@ -7,7 +7,7 @@ services:
       dockerfile: Dockerfile
 #    command:  ["./deepstream", "-s", "file:///data/demo-video-cafe.mp4", "-c", "config_infer_primary_yoloV8_pose.txt"]
 #    command:  ["deepstream-app", "-c", "deepstream_app_config.txt"]
-    command:  ["python", "-m", "http.server"]
+    command:  ["python3", "-m", "http.server"]
     environment:
       - NVIDIA_VISIBLE_DEVICES=all
       - DISPLAY=:1
